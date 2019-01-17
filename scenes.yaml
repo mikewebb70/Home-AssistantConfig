@@ -1,0 +1,27 @@
+#
+#  SCENES
+#
+
+- name: mood_night_mode
+  friendly_name: 'Night Mode'
+  entities:
+    switch.lounge_laamp: true
+    switch.lounge_dunno: true
+    switch.office_lamp: true
+    switch.orange_sherbert: true
+
+- name: mood_turn_off_all_lights
+  friendly_name: 'Turn Off All Lights'
+  entities:
+    switch.lounge_laamp: false
+    switch.lounge_dunno: false
+    switch.office_lamp: false
+    switch.orange_sherbert: false
+
+
+- name: mood_turn_off_mood_lights
+  friendly_name: 'Turn Off Mood Lights'
+  entities:
+    switch.lounge_laamp: false
+    switch.lounge_dunno: false
+    switch.office_lamp: false

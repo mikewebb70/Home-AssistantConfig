@@ -1,0 +1,34 @@
+- id: '201901071256'
+  alias: Bed Time
+  initial_state: 'on'
+  trigger:
+  - platform: time
+    at: '22:30:00'
+  action:
+  - service: scene.turn_on
+    entity_id: scene.mood_turn_off_mood_lights
+
+- id: '201901152100'
+  alias: Cloudy Night Mode
+  initial_state: 'on'
+  trigger:
+  - event: sunset
+    offset: -01:00:00
+    platform: sun
+  condition:
+  - condition: template
+    value_template: "{{ states('sensor.bom_albany_cloud') != 'Clear' }}"
+  action:
+    service: scene.turn_on
+    entity_id: scene.mood_night_mode
+
+- id: '201901071255'
+  alias: Clear Night Mode
+  initial_state: 'on'
+  trigger:
+  - event: sunset
+    offset: -00:30:00
+    platform: sun
+  action:
+  - entity_id: scene.mood_night_mode
+    service: scene.turn_on

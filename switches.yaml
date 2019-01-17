@@ -1,0 +1,55 @@
+#
+#  SWITCHES
+#
+
+- platform: mqtt
+  name: "Lounge Laamp"
+  state_topic: "tele/sonoff_laamp/STATE"
+  value_template: "{{ value_json.POWER }}"
+  command_topic: "cmnd/sonoff_laamp/POWER"
+  availability_topic: "tele/sonoff_laamp/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Lounge Dunno"
+  state_topic: "tele/sonoff_dunno/STATE"
+  value_template: "{{ value_json.POWER }}"
+  command_topic: "cmnd/sonoff_dunno/POWER"
+  availability_topic: "tele/sonoff_dunno/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Office Lamp"
+  state_topic: "tele/sonoff_office/STATE"
+  value_template: "{{ value_json.POWER }}"
+  command_topic: "cmnd/sonoff_office/POWER"
+  availability_topic: "tele/sonoff_office/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+- platform: mqtt
+  name: "Orange Sherbert"
+  state_topic: "tele/sonoff_oraange/STATE"
+  value_template: "{{ value_json.POWER }}"
+  command_topic: "cmnd/sonoff_oraange/POWER"
+  availability_topic: "tele/sonoff_oraange/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false

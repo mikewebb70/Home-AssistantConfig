@@ -1,0 +1,19 @@
+#
+# Binary Sensors
+#
+
+- platform: template
+  sensors:
+    hk_presence_mike:
+      friendly_name: "MikePhone-HK"
+      device_class: presence
+      value_template: >-
+        {{ is_state('input_boolean.mike_present', 'on') }}
+
+- platform: template
+  sensors:
+    hk_presence_tanja:
+      friendly_name: "TanjaPhone-HK"
+      device_class: presence
+      value_template: >-
+        {{ is_state('input_boolean.tanja_present', 'on') }}

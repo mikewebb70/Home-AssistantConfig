@@ -1,0 +1,192 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Stead
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Australia/Perth
+  # Customization file
+  customize: !include customize.yaml
+ # customize_glob:
+ #   "device_tracker.*":
+ #     hidden: true
+
+# Need this for now so HASS IOS app Authenticate
+http:
+  api_password: !secret api_password
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  include_used_components: true
+
+# Discover some devices automatically
+discovery:
+  ignore:
+    - apple_tv
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Recorder
+recorder:
+  purge_interval: 1
+  purge_keep_days: 3
+  exclude:
+    domains:
+      - alert
+      - automation
+      - group
+      - history_graph
+      - media_player
+      - sun
+      - updater
+      - zone
+
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Cloud
+cloud:
+
+# IOS
+ios:
+
+# Divice Tracking
+device_tracker:
+  - platform: netgear
+    url: !secret ng_ip
+    username: !secret ng_user
+    password: !secret ng_pass
+    devices:
+      - 48:3B:38:09:D7:63
+      - 28:E1:4C:3A:D2:46
+    exclude:
+      - 7C:AD:74:9B:8D:AC
+      - 04:54:53:CD:2B:49
+      - 08:66:98:C5:3D:1B
+      - 8C:29:37:D1:0C:A5
+      - 00:08:9B:FE:E7:F1
+      - 1C:1B:0D:0B:51:93
+      - DC:4F:22:DF:EA:D3
+      - DC:4F:22:DF:43:F0
+      - DC:4F:22:DF:BD:1B
+      - DC:4F:22:DE:E1:43
+      - B8:27:EB:F8:3C:37
+      - 70:56:81:AE:1E:DB
+#   interval_seconds: 10
+#   consider_home: 180
+    newdevice_defaults:
+      track_new_devices: true
+
+# HomeKit
+homekit:
+  name: Stead Home Bridge
+  filter:
+    exclude_domains:
+      - sensor
+      - script
+      - scene
+      - device_tracker
+      - automation
+      - binary_sensor
+      - input_boolean
+    include_entities:
+      - scene.mood_turn_off_all_lights
+      - scene.mood_night_mode
+      - sensor.bom_albany_air_temp_c
+      - sensor.bom_albany_relative_humidity
+      - device_tracker.mikephone
+      - device_tracker.seanymphiphone
+      - input_boolean.mike_present
+      - input_boolean.tanja_present
+      - binary_sensor.hk_presence_tanja
+      - binary_sensor.hk_presence_mike
+      - script.delayed_goodnight
+
+apple_tv:
+  - host: !secret a_ip
+    login_id: !secret a_login
+    credentials: !secret a_cred
+
+input_boolean:
+  mike_present:
+    name: Mike
+    icon: mdi:account
+  tanja_present:
+    name: Tanja
+    icon: mdi:account
+
+# Text to speech
+tts:
+  - platform: google
+
+panel_iframe:
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: !secret con_ip
+
+  pihole:
+    title: Pi-hole
+    icon: mdi:block-helper
+    url: !secret pi_hole_ip
+
+#
+#  INCLUDE FILES
+#
+
+# Scence
+scene: !include scenes.yaml
+
+# Sensors file
+sensor: !include sensors.yaml
+
+# Binary Sensors file
+binary_sensor: !include binary_sensors.yaml
+
+# Switches
+switch: !include switches.yaml
+
+# Lights file
+#lights: !include lights.yaml
+
+# Groups file
+group: !include groups.yaml
+
+# Automitions file
+automation: !include automations.yaml
+
+# Scripts file
+script: !include scripts.yaml
+
+# Zone file
+zone: !include zones.yaml

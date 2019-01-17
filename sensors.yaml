@@ -1,0 +1,98 @@
+#
+#  SENSORS
+#
+
+# System Monitors
+- platform: systemmonitor
+  resources:
+    - type: disk_free
+      arg: /
+    - type: memory_free
+    - type: processor_use
+    - type: last_boot
+    - type: load_5m
+    - type: network_in
+      arg: eth0
+    - type: network_out
+      arg: eth0
+
+
+# Weather prediction
+- platform: bom
+  station: IDW60801.94802
+  name: Albany
+  monitored_conditions:
+    - apparent_t
+    - rel_hum
+    - air_temp
+    - press
+    - cloud
+    - rain_trace
+    - dewpt
+    - wind_spd_kmh
+    - gust_kmh
+    - wind_dir
+
+# Pi Hole DNS
+
+- platform: pi_hole
+  host: localhost:4865
+  monitored_conditions:
+    - ads_blocked_today
+    - dns_queries_today
+#     - unique_clients
+
+# Anolog light sensor
+
+- platform: mqtt
+  name: "lux office"
+  state_topic: "tele/labmcu/SENSOR"
+  unit_of_measurement: "%"
+  #value_template: "{{ value_json['ANALOG'].A0 }}"
+  value_template: "{{ (value_json['ANALOG'].A0|float/1024*100|float)|round(0) }}"
+  availability_topic: "tele/labmcu/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+
+#  - platform: template
+#    sensors:
+#      roomt:
+#        value_template: >-
+#          {% if is_state('sensor.lux_office')|int <80 %}
+#            dark
+#          {% else %}
+#            light
+#          {% endif %}
+#        icon_template: >-
+#          {% if states('sensor.lux_office')|int <80 %}
+#            mdi:weather-night
+#          {% else %}
+#            mdi:weather-sunny
+#          {% endif %}
+
+# Internet Speed Tests
+- platform: speedtest
+  server_id: 6153
+  minute:
+    - 0
+    - 30
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+# Time Functions
+- platform: time_date
+  display_options:
+    - 'date'
+- platform: template
+  sensors:
+    week:
+      friendly_name: Week Number
+      value_template: >-
+        {{ strptime(states('sensor.date'), '%Y-%m-%d').strftime('%V') }}
+
+## WorldTides service
+#- platform: worldtidesinfo
+#  api_key: !secret tide_api
+#  name: Albany Harbour

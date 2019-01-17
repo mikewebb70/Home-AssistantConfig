@@ -1,0 +1,117 @@
+#
+#  customize
+#
+sensor.date:
+  hidden: true
+sensor.week:
+  hidden: true
+remote.living_room:
+  hidden: true
+
+sensor.lux_office:
+  friendly_name: Office
+  icon: mdi:weather-sunny
+  templates:
+    rgb_color: "if (state < 50) return [200, 100, 30]; else return [10, 20, 30];"
+
+# Weather Card
+sensor.bom_albany_air_temp_c:
+  friendly_name: Tempurature
+  icon: mdi:temperature-celsius
+sensor.bom_albany_feels_like_c:
+  friendly_name: Feels Like
+  icon: mdi:human-handsdown
+sensor.bom_albany_dew_point_c:
+  friendly_name: Dew Point
+  icon: mdi:thermometer-lines
+sensor.bom_albany_pressure_mb:
+  friendly_name: Pressure
+  icon: mdi:weather-hurricane
+sensor.bom_albany_relative_humidity:
+  friendly_name: Humidity
+  icon: mdi:oil-temperature
+sensor.bom_albany_wind_speed_kmh:
+  friendly_name: Wind
+  icon: mdi:waves
+sensor.bom_albany_wind_gust_kmh:
+  friendly_name: Gusting
+  icon: mdi:weather-windy
+sensor.bom_albany_wind_direction:
+  friendly_name: Direction
+  icon: mdi:arrow-expand-all
+sensor.bom_albany_cloud:
+  friendly_name: Cloud
+  icon: mdi:cloud
+sensor.bom_albany_rain_today:
+  friendly_name:  Rain
+  icon: mdi:umbrella-outline
+
+# Internet
+sensor.pihole_dns_unique_clients:
+  friendly_name: Connections
+sensor.pi_hole_dns_queries_today:
+  friendly_name: Queries
+sensor.pi_hole_ads_blocked_today:
+  friendly_name: Blocked
+sensor.speedtest_ping:
+  friendly_name: Latency
+  icon: mdi:arrow-left-right-bold-outline
+sensor.speedtest_download:
+  friendly_name: Download Speed
+sensor.speedtest_upload:
+  friendly_name: Upload Speed
+
+# Lights
+switch.test_led:
+  friendly_name: Lab LED
+  icon: mdi:led-off
+
+switch.office_lamp:
+  friendly_name: Office Lamp
+  icon: mdi:lamp
+
+switch.lounge_dunno:
+  friendly_name: Dunno
+  icon: mdi:floor-lamp
+  
+switch.orange_sherbert:
+  friendly_name: Orange Sherbert
+  icon: mdi:lamp
+
+switch.lounge_laamp:
+  friendly_name: Laamp
+  icon: mdi:lava-lamp
+
+# System Card
+sensor.load_5m:
+  hidden: true
+sensor.last_boot:
+  hidden: true
+sensor.network_in_eth0:
+  hidden: true
+sensor.network_out_eth0:
+  hidden: true
+
+# Who's Card
+device_tracker.mikephone:
+  friendly_name: MikePhone-HA
+  hidden: false
+device_tracker.mikepad:
+  friendly_name: MIkePad-HA
+  hidden: false
+device_tracker.mikephone_2:
+  friendly_name: MikePhone-NG
+  hidden: false
+device_tracker.seanymphiphone:
+  friendly_name: TanjaPhone-NG
+  hidden: false
+binary_sensor.hk_presence_tanja:
+  hidden: false
+binary_sensor.hk_presence_mike:
+  hidden: false
+  
+# Scenes
+scene.mood_turn_off_all_lights:
+  friendly_name: Turn Off All Lights
+scene.mood_night_mode:
+  friendly_name: Activate Night Mode

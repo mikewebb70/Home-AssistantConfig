@@ -1,0 +1,64 @@
+#
+#  Scripts
+#
+
+#  Absolute dogs breakfast way to switch off ApplTV, but it works well
+'turn_off_atv':
+  alias: Sleep Apple TV
+  sequence:
+  - service: remote.send_command
+    data:
+      entity_id: remote.living_room
+      command:
+      - top_menu
+  - delay: '00:00:5'
+  - service: remote.send_command
+    data:
+      entity_id: remote.living_room
+      command:
+      - menu
+  - delay: '00:00:01'
+  - service: remote.send_command
+    data:
+      entity_id: remote.living_room
+      command:
+      - left
+  - delay: '00:00:01'
+  - service: remote.send_command
+    data:
+      entity_id: remote.living_room
+      command:
+      - right
+      - right
+      - right
+      - right
+      - select
+  - delay: '00:00:01'
+  - service: remote.send_command
+    data:
+      entity_id: remote.living_room
+      command:
+      - down
+      - down
+      - down
+      - down
+      - down
+      - down
+      - down
+      - down
+      - down
+      - select
+
+'delayed_goodnight':
+  alias: Time for bed
+  sequence:
+    - event: LOGBOOK_ENTRY
+      event_data:
+         message: Gone to bed
+    - service: script.turn_on
+      entity_id: script.turn_off_atv
+    - service: scene.turn_on
+      entity_id: scene.mood_turn_off_mood_lights
+    - delay: '00:05:00'
+    - service: switch.turn_off
+      entity_id: switch.orange_sherbert

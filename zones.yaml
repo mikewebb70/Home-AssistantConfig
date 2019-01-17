@@ -1,0 +1,38 @@
+#
+#  ZONES
+#
+
+  - name: Haddons Home
+    latitude: !secret haddon.home_lat
+    longitude: !secret haddon.home_long
+    radius: 50
+    icon: mdi:home-heart
+    passive: false
+
+  - name: Tanja Work
+    latitude: !secret tanja.work_lat
+    longitude: !secret tanja.work_long
+    radius: 200
+    icon: mdi:castle
+    passive: false
+
+  - name: Bottle Shop
+    latitude: !secret bottle.shop_lat
+    longitude: !secret bottleshop_long
+    radius: 50
+    icon: mdi:bottle-wine
+    passive: false
+
+  - name: IGA City
+    latitude: !secret iga.city_lat
+    longitude: !secret iga.city_long
+    radius: 50
+    icon: mdi:cart
+    passive: false
+
+  - name: IGA North Road
+    latitude: !secret iga.nr_lat
+    longitude: !secret iga.nr_long
+    radius: 100
+    icon: mdi:cart
+    passive: false
