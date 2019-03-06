@@ -3,10 +3,6 @@
 #
 
 
-# travis-ci
-- platform: travisci
-  api-key: c52d8c555f6a8e96540ad6ad7f463b0165f7687f
-
 # System Monitors
 - platform: systemmonitor
   resources:
