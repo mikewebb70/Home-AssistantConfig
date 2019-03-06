@@ -2,6 +2,11 @@
 #  SENSORS
 #
 
+
+# travis-ci
+- platform: travisci
+  api-key: !secret travis_api_key
+
 # System Monitors
 - platform: systemmonitor
   resources:
