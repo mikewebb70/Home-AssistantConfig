@@ -17,7 +17,7 @@
     passive: false
 
   - name: Bottle Shop
-    latitude: !secret bottle.shop_lat
+    latitude: !secret bottleshop_lat
     longitude: !secret bottleshop_long
     radius: 50
     icon: mdi:bottle-wine
