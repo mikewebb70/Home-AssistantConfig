@@ -22,6 +22,8 @@ http:
 
 # Enables the frontend
 frontend:
+# system health
+system_health:
 
 # Enables configuration UI
 config:
@@ -83,29 +85,16 @@ ios:
 # Divice Tracking
 device_tracker:
   - platform: netgear
-    url: !secret ng_ip
+    url: http://192.168.1.1:80
     username: !secret ng_user
     password: !secret ng_pass
     devices:
       - 48:3B:38:09:D7:63
       - 28:E1:4C:3A:D2:46
-    exclude:
-      - 7C:AD:74:9B:8D:AC
-      - 04:54:53:CD:2B:49
-      - 08:66:98:C5:3D:1B
-      - 8C:29:37:D1:0C:A5
-      - 00:08:9B:FE:E7:F1
-      - 1C:1B:0D:0B:51:93
-      - DC:4F:22:DF:EA:D3
-      - DC:4F:22:DF:43:F0
-      - DC:4F:22:DF:BD:1B
-      - DC:4F:22:DE:E1:43
-      - B8:27:EB:F8:3C:37
-      - 70:56:81:AE:1E:DB
-#   interval_seconds: 10
-#   consider_home: 180
-    newdevice_defaults:
-      track_new_devices: true
+    interval_seconds: 10
+    consider_home: 180
+    new_device_defaults:
+      track_new_devices: false
 
 # HomeKit
 homekit:
@@ -119,21 +108,22 @@ homekit:
       - automation
       - binary_sensor
       - input_boolean
+      - remote
     include_entities:
       - scene.mood_turn_off_all_lights
       - scene.mood_night_mode
       - sensor.bom_albany_air_temp_c
-      - sensor.bom_albany_relative_humidity
-      - device_tracker.mikephone
-      - device_tracker.seanymphiphone
+#      - sensor.bom_albany_relative_humidity
+#      - device_tracker.mikephone
+#      - device_tracker.seanymphiphone
       - input_boolean.mike_present
       - input_boolean.tanja_present
-      - binary_sensor.hk_presence_tanja
-      - binary_sensor.hk_presence_mike
+#      - binary_sensor.hk_presence_tanja
+#      - binary_sensor.hk_presence_mike
       - script.delayed_goodnight
 
 apple_tv:
-  - host: !secret a_ip
+  - host: 192.168.1.104
     login_id: !secret a_login
     credentials: !secret a_cred
 
@@ -149,22 +139,33 @@ input_boolean:
 tts:
   - platform: google
 
+speedtestdotnet:
+  server_id:  6153
+  scan_interval:
+    minutes: 30
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
 panel_iframe:
   configurator:
     title: Configurator
     icon: mdi:wrench
-    url: !secret con_ip
+    url: http://192.168.1.221:3218
 
   pihole:
     title: Pi-hole
     icon: mdi:block-helper
-    url: !secret pi_hole_ip
+    url: http://192.168.1.221:4865
+
+
 
 #
 #  INCLUDE FILES
 #
 
-# Scence
+# Scene
 scene: !include scenes.yaml
 
 # Sensors file
