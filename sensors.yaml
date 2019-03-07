@@ -1,6 +1,24 @@
 #
 #  SENSORS
 #
+
+# QNAP NAS
+- platform: qnap
+  host: !secret nas_ip
+  username: !secret nas_username
+  password: !secret nas_password
+  monitored_conditions:
+    - status
+    - cpu_usage
+    - cpu_temp
+    - memory_percent_used
+    - network_tx
+    - network_rx
+    - volume_percentage_used
+    - drive_smart_status
+    - drive_temp
+
+
 - platform: github
   access_token: !secret github_access_token
   repositories:

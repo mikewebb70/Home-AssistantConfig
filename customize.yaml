@@ -109,9 +109,11 @@ binary_sensor.hk_presence_tanja:
   hidden: false
 binary_sensor.hk_presence_mike:
   hidden: false
-  
+
 # Scenes
 scene.mood_turn_off_all_lights:
   friendly_name: Turn Off All Lights
 scene.mood_night_mode:
   friendly_name: Activate Night Mode
+
+# QNAP
