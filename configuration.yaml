@@ -85,7 +85,8 @@ ios:
 # Divice Tracking
 device_tracker:
   - platform: netgear
-    url: http://192.168.1.1:80
+#    url: http://192.168.1.1:80
+    host: 192.168.1.1
     username: !secret ng_user
     password: !secret ng_pass
     devices:
@@ -95,6 +96,7 @@ device_tracker:
     consider_home: 180
     new_device_defaults:
       track_new_devices: false
+      hide_if_away: false
 
 # HomeKit
 homekit:

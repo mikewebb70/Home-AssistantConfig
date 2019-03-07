@@ -1,7 +1,10 @@
 #
 #  SENSORS
 #
-
+- platform: github
+  access_token: !secret github_access_token
+  repositories:
+    - path: 'mikewebb70/Home-AssistantConfig'
 
 # System Monitors
 - platform: systemmonitor
