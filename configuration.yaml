@@ -160,6 +160,16 @@ panel_iframe:
     title: Pi-hole
     icon: mdi:block-helper
     url: http://192.168.1.221:4865
+    
+  tasmoadmin:
+    title: TasmoAdmin
+    icon: mdi:lightbulb-on
+    url: http://192.168.1.221:9541
+
+  esphome:
+    title: ESPHome
+    icon: mdi:chip
+    url: http://192.168.1.221:6052/
 
 
 
