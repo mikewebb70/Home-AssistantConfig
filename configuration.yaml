@@ -17,8 +17,17 @@ homeassistant:
  #     hidden: true
 
 # Need this for now so HASS IOS app Authenticate
-http:
-  api_password: !secret api_password
+#http:
+#  api_password: !secret api_password
+  auth_providers:
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.1.0/24
+        - 127.0.0.1
+        - ::1
+      allow_bypass_login: true
+    - type: homeassistant
+
 
 # Enables the frontend
 frontend:
@@ -139,7 +148,8 @@ input_boolean:
 
 # Text to speech
 tts:
-  - platform: google
+  - platform: google_translate
+    service_name: google_say
 
 speedtestdotnet:
   server_id:  6153
@@ -151,25 +161,11 @@ speedtestdotnet:
     - upload
 
 panel_iframe:
-  configurator:
-    title: Configurator
-    icon: mdi:wrench
-    url: http://192.168.1.221:3218
-
-  pihole:
-    title: Pi-hole
-    icon: mdi:block-helper
-    url: http://192.168.1.221:4865
-    
   tasmoadmin:
     title: TasmoAdmin
     icon: mdi:lightbulb-on
     url: http://192.168.1.221:9541
 
-  esphome:
-    title: ESPHome
-    icon: mdi:chip
-    url: http://192.168.1.221:6052/
 
 
 
