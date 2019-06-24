@@ -17,3 +17,12 @@
       device_class: presence
       value_template: >-
         {{ is_state('input_boolean.tanja_present', 'on') }}
+
+- platform: workday
+  country: AU
+  province: WA
+  workdays: [mon, tue, wed, thu, fri]
+  excludes: [sat, sun, holiday]
+#   add_holidays:
+#     - '2018-12-26'
+#     - '2018-12-31'

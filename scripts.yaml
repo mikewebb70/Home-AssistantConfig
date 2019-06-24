@@ -2,7 +2,7 @@
 #  Scripts
 #
 
-#  Absolute dogs breakfast way to switch off ApplTV, but it works well
+#  Absolute dogs breakfast way to switch off AppleTV, but it works well
 'turn_off_atv':
   alias: Sleep Apple TV
   sequence:
@@ -50,7 +50,7 @@
       - select
 
 'delayed_goodnight':
-  alias: Time for bed
+  alias: Sleepy Time
   sequence:
     - event: LOGBOOK_ENTRY
       event_data:
@@ -62,3 +62,18 @@
     - delay: '00:05:00'
     - service: switch.turn_off
       entity_id: switch.orange_sherbert
+
+'morning_sunrise':
+  alias: Morning Sunrise
+  sequence:
+    - event: LOGBOOK_ENTRY
+      event_data:
+         message: Workday Sunrise
+    - service: switch.turn_on
+      entity_id: switch.orange_sherbert
+    - delay: '00:12:00'
+    - service: switch.turn_on
+      entity_id: switch.lounge_dunno
+    - delay: '00:10:00'
+    - service: switch.turn_on
+      entity_id: switch.office_lamp

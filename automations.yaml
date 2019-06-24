@@ -7,7 +7,6 @@
   action:
   - service: scene.turn_on
     entity_id: scene.mood_turn_off_mood_lights
-
 - id: '201901152100'
   alias: Cloudy Night Mode
   initial_state: 'on'
@@ -17,11 +16,10 @@
     platform: sun
   condition:
   - condition: template
-    value_template: "{{ states('sensor.bom_albany_cloud') != 'Clear' }}"
+    value_template: '{{ states(''sensor.bom_albany_cloud'') != ''Clear'' }}'
   action:
-    service: scene.turn_on
+  - service: scene.turn_on
     entity_id: scene.mood_night_mode
-
 - id: '201901071255'
   alias: Clear Night Mode
   initial_state: 'on'
@@ -30,5 +28,43 @@
     offset: -00:30:00
     platform: sun
   action:
-  - entity_id: scene.mood_night_mode
-    service: scene.turn_on
+  - service: scene.turn_on
+    entity_id: scene.mood_night_mode
+
+- id: '1558257492130'
+  alias: Morning Sunrise
+  initial_state: 'on'
+  trigger:
+  - platform: time
+    at: 05:58
+  condition:
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  - condition: sun
+    before: sunrise
+    before_offset: '-6'
+  - condition: numeric_state
+    entity_id: sensor.office_illuminance
+    below: 14
+  action:
+    - service: script.turn_on
+      entity_id: script.morning_sunrise
+    - service: automation.turn_on
+      entity_id: automation.cancel_sunrise
+
+- id: '1558337549632'
+  alias: Cancel Sunrise
+  trigger:
+  - event: sunrise
+    offset: +00:15:00
+    platform: sun
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.office_illuminance
+    above: '17'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.mood_turn_off_all_lights
+    - service: automation.turn_off
+      entity_id: automation.cancel_sunrise
