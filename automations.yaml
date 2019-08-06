@@ -3,7 +3,7 @@
   initial_state: 'on'
   trigger:
   - platform: time
-    at: '22:30:00'
+    at: '22:00:00'
   action:
   - service: scene.turn_on
     entity_id: scene.mood_turn_off_mood_lights
@@ -44,27 +44,17 @@
   - condition: sun
     before: sunrise
     before_offset: '-6'
-  - condition: numeric_state
-    entity_id: sensor.office_illuminance
-    below: 14
   action:
     - service: script.turn_on
       entity_id: script.morning_sunrise
-    - service: automation.turn_on
-      entity_id: automation.cancel_sunrise
-
+  
 - id: '1558337549632'
   alias: Cancel Sunrise
   trigger:
   - event: sunrise
     offset: +00:15:00
     platform: sun
-  condition:
-  - condition: numeric_state
-    entity_id: sensor.office_illuminance
-    above: '17'
   action:
     - service: scene.turn_on
       entity_id: scene.mood_turn_off_all_lights
-    - service: automation.turn_off
-      entity_id: automation.cancel_sunrise
+ 
