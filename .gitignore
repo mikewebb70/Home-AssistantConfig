@@ -19,7 +19,7 @@ deps
 .cloud
 .HA_VERSION
 .storage
-www
+# www
 tmp
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
