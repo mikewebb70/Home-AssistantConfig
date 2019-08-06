@@ -160,14 +160,9 @@ speedtestdotnet:
     - download
     - upload
 
-panel_iframe:
-  tasmoadmin:
-    title: TasmoAdmin
-    icon: mdi:lightbulb-on
-    url: http://192.168.1.221:9541
-
-
-
+hacs:
+  token: 0668f9ae5b1fbe87446670c8fdc3a9014876cf83
+  
 
 #
 #  INCLUDE FILES
