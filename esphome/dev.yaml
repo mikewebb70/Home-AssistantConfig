@@ -1,0 +1,92 @@
+esphome:
+  name: labmcu
+  platform: ESP8266
+  board: nodemcuv2
+  esphome_core_version: latest
+  
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+
+wifi:
+  ssid: IOT
+  password: !secret iot_wifi
+  fast_connect: on
+
+#mqtt:
+#  broker: 192.168.1.221
+#  username: mqtt
+#  password: test
+#  discovery: clean  
+  
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret esp
+
+ota:
+  password: !secret esp
+
+i2c:
+  sda: D1
+  scl: D2
+
+display:
+  - platform: lcd_pcf8574
+    dimensions: 16x2
+    address: 0x27
+    lambda: |-
+      it.strftime("%H:%M %d-%m-%Y", id(homeassistant_time).now());
+      
+sensor:
+  - platform: adc
+    pin: A0
+    name: "Office Illuminance"
+    unit_of_measurement: lx
+    update_interval: 30s
+    filters:
+      - lambda: |-
+          return (x / 10000.0) * 2000000.0;
+          
+  - platform: dht
+    model: DHT22
+    pin: D7
+    temperature:
+      name: "Office Temperature"
+    humidity:
+      name: "Office Humidity"
+      
+switch:
+  - platform: gpio
+    name: "Trigger LED"
+    icon: "mdi:led-variant-outline"
+    pin: D6
+    id: trigger_led
+    
+text_sensor:
+  - platform: homeassistant
+    name: "Sunset"
+    entity_id: sun.sun
+    id: sunset_sunrise
+      
+binary_sensor:
+  - platform: gpio
+    pin: D5
+    name: "Office Motion"
+    device_class: motion
+    id: office_motion
+    on_press:
+      then:
+        - if:
+            condition:
+              lambda: 'return id(sunset_sunrise).state == "below_horizon";'
+            then:
+              - logger.log: "The sensor value is below_horizon!"
+              - switch.turn_on: trigger_led
+              - delay: 15s
+            else:
+              - logger.log: "The sensor value is above_horizon!"
+        - switch.turn_off: trigger_led
+    
