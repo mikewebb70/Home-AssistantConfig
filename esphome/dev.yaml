@@ -13,12 +13,6 @@ wifi:
   password: !secret iot_wifi
   fast_connect: on
 
-#mqtt:
-#  broker: 192.168.1.221
-#  username: mqtt
-#  password: test
-#  discovery: clean  
-  
 # Enable logging
 logger:
 
