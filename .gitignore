@@ -9,8 +9,11 @@
 !*.rst
 !.travis.yml
 !themes/**
-!custom_components/**
-!www/**
+!custom_components/bom_forecast/**
+!www/custom_ui/**
+!www/icons/bom_icons/**
+!www/icons/weather_icons/animated/**
+!www/icons/weather_icons/statis/**
 !packages/**
 !appdaemon/**
 
