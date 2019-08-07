@@ -27,6 +27,8 @@ entity_registry.yaml
 *.jpg
 home-assistant.log
 home-assistant_v2.db
+ihome-assistant_v2.db-shm
+home-assistant_v2.db-wal
 *.db-journal
 *.db
 lib

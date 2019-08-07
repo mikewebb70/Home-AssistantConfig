@@ -3,21 +3,21 @@
 
 sensor:
 
-  - platform: bom
-    station: !secret my_bom_station
-    name: !secret my_bom_name
-    monitored_conditions:
-      - apparent_t
-      - delta_t
-      - gust_kmh
-      - gust_kt
-      - air_temp
-      - dewpt
-      - rain_trace
-      - rel_hum
-      - wind_dir
-      - wind_spd_kmh
-      - wind_spd_kt
+#  - platform: bom
+#    station: !secret my_bom_station
+#    name: !secret my_bom_name
+#    monitored_conditions:
+#      - apparent_t
+#      - delta_t
+#      - gust_kmh
+#      - gust_kt
+#      - air_temp
+#      - dewpt
+#      - rain_trace
+#      - rel_hum
+#      - wind_dir
+#      - wind_spd_kmh
+#      - wind_spd_kt
 
   - platform: bom_forecast
     product_id: !secret my_bom_product_id

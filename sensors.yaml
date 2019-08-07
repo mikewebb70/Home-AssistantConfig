@@ -38,6 +38,7 @@
   name: !secret my_bom_name 
   monitored_conditions:
     - apparent_t
+    - delta_t
     - rel_hum
     - air_temp
     - press
@@ -45,7 +46,9 @@
     - rain_trace
     - dewpt
     - wind_spd_kmh
+    - wind_spd_kt
     - gust_kmh
+    - gust_kt
     - wind_dir
 
 - platform: bom_forecast
