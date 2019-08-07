@@ -34,8 +34,8 @@
 
 # Weather prediction
 - platform: bom
-  station: IDW60801.94802
-  name: Albany
+  station: !secret my_bom_station
+  name: !secret my_bom_name 
   monitored_conditions:
     - apparent_t
     - rel_hum
@@ -48,6 +48,21 @@
     - gust_kmh
     - wind_dir
 
+- platform: bom_forecast
+  product_id: !secret my_bom_product_id
+  name: !secret my_bom_name         #In my examples I use Gosford
+  forecast_days: 6
+  rest_of_today: true
+  friendly: false
+  friendly_state_format: '{max}, {summary}'
+  monitored_conditions:
+    - 'max'
+    - 'min'
+    - 'chance_of_rain'
+    - 'possible_rainfall'
+    - 'summary'
+    - 'detailed_summary'
+    - 'icon'
 # Pi Hole DNS
 
 #- platform: pi_hole
