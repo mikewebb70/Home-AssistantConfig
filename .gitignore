@@ -8,14 +8,14 @@
 !*.md
 !*.rst
 !.travis.yml
-!themes/**
-!custom_components/bom_forecast/**
-!www/custom_ui/**
-!www/icons/bom_icons/**
-!www/icons/weather_icons/animated/**
-!www/icons/weather_icons/statis/**
-!packages/**
-!appdaemon/**
+!themes/*
+!custom_components/bom_forecast/*
+!www/custom_ui/*
+!www/icons/bom_icons/*
+!www/icons/weather_icons/animated/*
+!www/icons/weather_icons/statis/*
+!packages/*
+!appdaemon/*
 
 # Ignore folders.
 .storage

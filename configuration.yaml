@@ -10,15 +10,21 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Australia/Perth
+
   # Customization file
   customize: !include customize.yaml
+
+  # 
+  packages: !include_dir_named packages
+
  # customize_glob:
  #   "device_tracker.*":
  #     hidden: true
 
-# Need this for now so HASS IOS app Authenticate
-#http:
-#  api_password: !secret api_password
+
+ # Need this for now so HASS IOS app Authenticate
+ #http:
+ #  api_password: !secret api_password
   auth_providers:
     - type: trusted_networks
       trusted_networks:
