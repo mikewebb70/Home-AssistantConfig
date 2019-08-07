@@ -8,12 +8,11 @@
 !*.md
 !*.rst
 !.travis.yml
-!themes
-!custom_components/*
-!www/*
-!packages
-!tts
-!appdaemon
+!themes/**
+!custom_components/**
+!www/**
+!packages/**
+!appdaemon/**
 
 # Ignore folders.
 .storage
@@ -25,6 +24,7 @@ deps
 .HA_VERSION
 .storage
 tmp
+tts
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
