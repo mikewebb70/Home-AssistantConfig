@@ -1,7 +1,6 @@
 #
 # Binary Sensors
 #
-
 - platform: template
   sensors:
     hk_presence_mike:
