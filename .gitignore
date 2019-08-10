@@ -25,6 +25,7 @@ entity_registry.yaml
 *.crt
 *.key
 *.jpg
+*.pyc
 home-assistant.log
 home-assistant_v2.db
 ihome-assistant_v2.db-shm

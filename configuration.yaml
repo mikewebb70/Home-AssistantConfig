@@ -37,6 +37,8 @@ homeassistant:
 
 # Enables the frontend
 frontend:
+  javascript_version: latest
+
 # system health
 system_health:
 
@@ -59,6 +61,7 @@ updater:
 discovery:
   ignore:
     - apple_tv
+    - netgear_router
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -99,20 +102,26 @@ ios:
 
 # Divice Tracking
 device_tracker:
-  - platform: netgear
+#  - platform: netgear
 #    url: http://192.168.1.1:80
-    host: 192.168.1.1
-    username: !secret ng_user
-    password: !secret ng_pass
-    devices:
-      - 48:3B:38:09:D7:63
-      - 28:E1:4C:3A:D2:46
-    interval_seconds: 10
-    consider_home: 180
-    new_device_defaults:
-      track_new_devices: false
-      hide_if_away: false
-
+#    host: 192.168.1.1
+#    port: 80
+#    ssl: false
+#    username: !secret ng_user
+#    password: !secret ng_pass
+#    devices:
+#      - 48:3B:38:09:D7:63
+#      - 28:E1:4C:3A:D2:46
+#    interval_seconds: 10
+#    consider_home: 180
+#    new_device_defaults:
+#      track_new_devices: false
+#      hide_if_away: false
+  - platform: nmap_tracker
+    home_interval: 20
+    hosts:
+      - 192.168.1.120
+      - 192.168.1.108    
 # HomeKit
 homekit:
   name: Stead Home Bridge
@@ -170,6 +179,7 @@ speedtestdotnet:
 #  token: 0668f9ae5b1fbe87446670c8fdc3a9014876cf83
 #  sidepanel_title: Community
 #  sidepanel_icon: "mdi:alpha-c-box"
+
 
 #
 #  INCLUDE FILES
