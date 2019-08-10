@@ -3,6 +3,7 @@ python:
   - "3.5.6"
 before_install:
   - mv travis_secrets.yaml secrets.yaml
+  - sudo apt-get install net-tools namp 
 install:
   - pip3 install colorlog
   - pip3 install homeassistant
