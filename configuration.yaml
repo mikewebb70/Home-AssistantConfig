@@ -139,13 +139,8 @@ homekit:
       - scene.mood_turn_off_all_lights
       - scene.mood_night_mode
       - sensor.bom_albany_air_temp_c
-#      - sensor.bom_albany_relative_humidity
-#      - device_tracker.mikephone
-#      - device_tracker.seanymphiphone
       - input_boolean.mike_present
       - input_boolean.tanja_present
-#      - binary_sensor.hk_presence_tanja
-#      - binary_sensor.hk_presence_mike
       - script.delayed_goodnight
 
 apple_tv:
@@ -174,12 +169,6 @@ speedtestdotnet:
     - ping
     - download
     - upload
-
-#hacs:
-#  token: 0668f9ae5b1fbe87446670c8fdc3a9014876cf83
-#  sidepanel_title: Community
-#  sidepanel_icon: "mdi:alpha-c-box"
-
 
 #
 #  INCLUDE FILES
