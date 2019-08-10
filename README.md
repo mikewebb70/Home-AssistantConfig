@@ -6,5 +6,5 @@ Learn more about[Home Assistant](https://home-assistant.io/) and how to use it. 
 
 I am in the middle of moving over to lovelaceUI using a differnet branch on a local gitlab server.  So this repository may not reflect my current setup. The plan is to  start a dev branch and merge to master and deal with that and travisCI.
 
-![Preview](https://github.com/mikewebb70/HASS.JPG)
+![Preview](https://github.com/mikewebb70/Home-AssistantConfig/raw/master/HASS.JPG)
 
